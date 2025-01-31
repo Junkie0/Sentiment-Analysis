@@ -2,7 +2,7 @@
 
 This is a Flask-based web application for sentiment analysis. It allows users to input text and analyze its sentiment using different machine learning models.
 
-![SS](../Images/Screenshot%202025-01-31%20095405.png)
+![SS](./Images/Screenshot%202025-01-31%20095405.png)
 
 ## 🚀 Features
 
