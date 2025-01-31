@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Tool</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sentiment Analysis</h1>
+            <p class="subtitle">Analyze the emotional tone of your movie</p>
+        </header>
+
+        <main>
+            <form method="POST" class="analysis-form">
+                <div class="form-group">
+                    <textarea
+                        name="input_text"
+                        placeholder="Enter your text here..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-controls">
+                    <div class="model-select">
+                        <label for="model">Select Model:</label>
+                        <select name="model" id="model">
+                            <option value="Logistic Regression">Logistic Regression</option>
+                            <option value="Linear SVM">Linear SVM</option>
+                            <option value="Multinomial Naive Bayes">Multinomial Naive Bayes</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="analyze-btn">Analyze Sentiment</button>
+                </div>
+            </form>
+
+            <div class="result" id="result" style="display: none;">
+                <div class="result-content">
+                    <span class="result-label">Sentiment:</span>
+                    <span class="result-value" id="sentiment-value"></span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const resultDiv = document.getElementById('result');
+            const sentimentValue = document.getElementById('sentiment-value');
+
+            // Show result div if there's an initial sentiment
+            {% if sentiment %}
+            sentimentValue.textContent = "{{ sentiment }}";
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + ("{{ sentiment }}".toLowerCase() === 'positive' ? 'positive' : 'negative');
+            {% endif %}
+
+            form.addEventListener('submit', function(e) {
+                // Remove the preventDefault() since we want the form to submit normally
+                // The page will refresh with the new result
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .positive {
+            color: green;
+        }
+        .negative {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form method="POST">
+        <textarea name="input_text" placeholder="Enter your text here..." required>{{ request.form.get('input_text', '') }}</textarea><br>
+        <label for="model">Choose a model:</label>
+        <select name="model">
+            {% for model in models %}
+            <option value="{{ model }}" {% if model == selected_model %}selected{% endif %}>{{ model }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Analyze</button>
+    </form>
+    {% if sentiment %}
+    <div class="result {% if sentiment == 'Positive' %}positive{% else %}negative{% endif %}">
+        <strong>Sentiment:</strong> {{ sentiment }}
+    </div>
+    {% endif %}
+</body>
+</html>

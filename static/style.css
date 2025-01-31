@@ -1,0 +1,164 @@
+/* Base Styles */
+:root {
+    --primary-color: #4a90e2;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --background-color: #f5f7fa;
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Form Styles */
+.analysis-form {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 2px solid #e1e8ed;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.model-select {
+    flex: 1;
+    min-width: 200px;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e8ed;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.analyze-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.analyze-btn:hover {
+    background-color: #357abd;
+}
+
+/* Result Styles */
+.result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.result-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.result-label {
+    font-weight: 600;
+}
+
+.result-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.positive .result-value {
+    color: var(--success-color);
+}
+
+.negative .result-value {
+    color: var(--error-color);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-controls {
+        flex-direction: column;
+    }
+    
+    .model-select {
+        width: 100%;
+    }
+    
+    .analyze-btn {
+        width: 100%;
+    }
+}
